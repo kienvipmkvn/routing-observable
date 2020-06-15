@@ -12,6 +12,9 @@ import { ProductEditComponent } from './product-list/product-edit/product-edit.c
 import { CompanyDetailComponent } from './companies/company-detail/company-detail.component';
 import { Custom1 } from './custom/custom1.directive';
 import { Custom2Directive } from './custom/custom2.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { CompanyStartComponent } from './companies/company-start/company-start.component';
+import { CompanyEditComponent } from './companies/company-edit/company-edit.component';
 
 @NgModule({
   declarations: [
@@ -24,11 +27,14 @@ import { Custom2Directive } from './custom/custom2.directive';
     ProductEditComponent,
     CompanyDetailComponent,
     Custom1,
-    Custom2Directive
+    Custom2Directive,
+    CompanyStartComponent,
+    CompanyEditComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

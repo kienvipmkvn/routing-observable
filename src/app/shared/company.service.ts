@@ -1,12 +1,11 @@
 import { Company } from '../companies/company.model';
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Product } from './product.model';
 
 @Injectable({
 	providedIn:'root'
 })
 export class CompanyService {
-    companySelected = new EventEmitter<Company>();
 
   companies: Company[] = [
     new Company(

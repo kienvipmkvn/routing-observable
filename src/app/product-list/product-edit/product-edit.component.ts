@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Product } from 'src/app/shared/product.model';
+import { ProductService } from 'src/app/shared/product.service';
 
 @Component({
   selector: 'app-product-edit',
@@ -7,13 +8,12 @@ import { Product } from 'src/app/shared/product.model';
   styleUrls: ['./product-edit.component.css']
 })
 export class ProductEditComponent implements OnInit {
-  @Output() addProduct = new EventEmitter<Product>()
   product: Product;
   name:string;
   price: number;
   color: string;
   imgPath: string;
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit(): void {
   }
@@ -21,7 +21,7 @@ export class ProductEditComponent implements OnInit {
   onAddProduct(){
     if(name==null || this.price ==null || this.color==null) return;
     this.product= new Product(this.name, this.price, this.color, this.imgPath);
-    this.addProduct.emit(this.product);
+    this.productService.addProduct(this.product);
   }
 
 }

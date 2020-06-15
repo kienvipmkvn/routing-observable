@@ -1,11 +1,12 @@
 import { Product } from './product.model';
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
     providedIn:'root'
 })
 export class ProductService{
-    productChanged = new EventEmitter<Product[]>();
+    productChanged = new Subject<Product[]>();
     products: Product[] = [
         new Product(
           'Lux A2.0 Standard',
@@ -27,12 +28,12 @@ export class ProductService{
 
     addProduct(product: Product){
         this.products.push(product);
-        this.productChanged.emit(this.products.slice());
+        this.productChanged.next(this.products.slice());
     }
     addProducts(products: Product[]){
         for (const product of products) {
             this.products.push(product);
         }
-        this.productChanged.emit(this.products.slice())
+        this.productChanged.next(this.products.slice())
     }
 }

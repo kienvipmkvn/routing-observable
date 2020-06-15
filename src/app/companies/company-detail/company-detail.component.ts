@@ -1,6 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Company } from '../company.model';
 import { ProductService } from 'src/app/shared/product.service';
+import { CompanyService } from 'src/app/shared/company.service';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-company-detail',
@@ -8,10 +10,18 @@ import { ProductService } from 'src/app/shared/product.service';
   styleUrls: ['./company-detail.component.css']
 })
 export class CompanyDetailComponent implements OnInit {
-  @Input() company: Company = null;
-  constructor(private productService: ProductService) { }
+  company: Company;
+  id: number;
+  constructor(
+    private companyService: CompanyService, 
+    private productService: ProductService, 
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params:Params)=>{
+      this.id = +params['id'];
+      this.company = this.companyService.getCompanies()[this.id];
+    })
   }
 
   toProduct(){

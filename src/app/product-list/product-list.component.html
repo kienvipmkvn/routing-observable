@@ -4,7 +4,7 @@
   <hr />
   <ul class="list-group">
     <a
-      href="#"
+      style="cursor: pointer;"
       class="list-group-item clearfix"
       *ngFor="let product of products"
       [appCustom1]="product.color"
@@ -13,7 +13,7 @@
         <h4 class="list-group-item-heading">{{ product.name }}</h4>
         <p class="list-group-item-text">
           Color: {{ product.color }}
-          <span [ngStyle]="{ color: product.color }" >■</span>
+          <span [ngStyle]="{ color: product.color }">■</span>
         </p>
         <p class="list-group-item-text">Price: {{ product.price }}$</p>
       </div>
